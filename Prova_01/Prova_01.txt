@@ -1,0 +1,87 @@
+Cenário: Desenvolver uma aplicação para gerenciar a matricula de Disciplinas, com alunos
+e professores.
+1. Classe Data: Classe que contém os seguintes atributos:
+• dia;
+• mes;
+• ano;
+Métodos:
+• construtor
+• toString();
+
+Classe Pessoa: classe que contém os seguintes atributos:
+• nome completo;
+• documento (pode ser rg, cpf, etc);
+• data de nascimento
+Métodos:
+• Construtores:
+– um com os parâmetros nome completo, documento e data de nascimento
+– e outro com nome completo e data de nascimento
+• toString();
+
+Classe Usuário: classe que extende Pessoa com os atributos adicionais:
+• usuário (username);
+• senha
+Métodos:
+• Construtores:
+– De acordo com a classe herdada e os atributos adicionais
+• login com senha como parâmetro (Apenas escreve uma mensagem "Usuário logado
+no sistema"ou "Senha incorreta")
+• toString();
+
+Classe Professor: estende a classe Usuário com os atributos adicionais:
+Trabalho Avaliativo – B01 1 de setembro de 2020
+• Formação: (’G’ = graduação, ’M’ = mestrado, ’D’ = Doutorado)
+• Departamento
+Métodos:
+• Construtores:
+– De acordo com a classe herdada e os atributos adicionais
+• Editar (sobrecarregado)
+– Editar apenas a formação
+– Editar a formação e o departamento
+• Reescrever o método login. Caso a senha esteja correta exibir a mensagem "Usuário
+logado no Professor Online"
+• Reescrever o método toString()
+
+Classe Aluno: estende a classe Usuário com os atributos adicionais:
+• RA
+• curso
+• situação (’A’ = abandono, ’C’ Cursando, ’D’ = Desistente)
+Métodos:
+• Construtores:
+– De acordo com a classe herdada e os atributos adicionais
+– o atributo usuário (username) da superclasse deve ser o mesmo RA
+• Atualizar a situação do aluno
+• Reescrever o método login. Caso a senha esteja correta exibir a mensagem "Usuário
+logado no Acadêmico Online"
+• Reescrever o método toString()
+
+Classe Disciplina: 
+é composta pelos atributos
+• nome
+• carga horária
+• Array de até 30 alunos
+• Um professor
+Métodos:
+• Construtor com nome e carga horária
+---------------
+• Matricular um aluno (sobrecarregado)
+– parâmetro um objeto aluno
+– parâmetro nome completo, documento, data de nascimento, ra, senha e curso
+---------------
+• Atribuir professor
+• toString()
+
+• lista de assinatura:
+– Imprime as informações da disciplina e uma lista com os nomes de cada aluno
+para assinatura de presença.
+– Somente deve ser impressos alunos cursando
+
+Classe Principal:
+• Crie um secretário da classe usuário e faça o login do secretário;
+• Crie uma disciplina da classe disciplina, configure seus atributos;
+• Adicione alguns alunos na disciplina;
+• Adicione um professor na disciplina;
+• Altere a situação de alguns aluno;
+• Faça o login do professor;
+• Faça o login de um aluno;
+• Imprima a lista de assinatura;
