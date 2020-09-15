@@ -6,74 +6,85 @@ public class Agencia {
     private ContaCorrente listaContaCorrente[];
     private ContaPoupanca listaContaPoupanca[];
 
-    public Agencia(int numeroAgencia, double limitePadrao, double rendimentoPadrao){
-        this.numeroAgencia=numeroAgencia;
+    public Agencia(int numeroAgencia, double limitePadrao, double rendimentoPadrao) {
+        this.numeroAgencia = numeroAgencia;
         this.limitePadrao = limitePadrao;
         this.rendimentoPadrao = rendimentoPadrao;
         this.proximoNumeroConta = 1;
         this.listaContaCorrente = new ContaCorrente[20];
         this.listaContaPoupanca = new ContaPoupanca[20];
     }
-    public int getNumeroAgencia(){
+
+    public int getNumeroAgencia() {
         return this.numeroAgencia;
     }
-    public int getProximoNumeroConta(){
+
+    public int getProximoNumeroConta() {
         return this.proximoNumeroConta;
     }
-    public ContaCorrente[] getListaContaCorrente(){
+
+    public ContaCorrente[] getListaContaCorrente() {
         return this.listaContaCorrente;
     }
-    public ContaPoupanca[] getListaContaPoupanca(){
+
+    public ContaPoupanca[] getListaContaPoupanca() {
         return this.listaContaPoupanca;
     }
 
-    public double getLimitePadrao(){
+    public double getLimitePadrao() {
         return this.limitePadrao;
     }
 
-    public void setLimitePadrao(double limitePadrao){
+    public void setLimitePadrao(double limitePadrao) {
         this.limitePadrao = limitePadrao;
     }
 
-    public double getRendimentoPadrao(){
+    public double getRendimentoPadrao() {
         return this.rendimentoPadrao;
     }
-    public void setRendimentoPadrao(double rendimentoPadrao){
+
+    public void setRendimentoPadrao(double rendimentoPadrao) {
         this.rendimentoPadrao = rendimentoPadrao;
     }
 
-    public ContaCorrente novaContaCorrente(String nomeTitular){
-        ContaCorrente novaContaCorrente = new ContaCorrente(nomeTitular, this.numeroAgencia, this.proximoNumeroConta, this.limitePadrao);
+    public ContaCorrente novaContaCorrente(String nomeTitular) {
+        ContaCorrente novaContaCorrente = new ContaCorrente(nomeTitular, this.numeroAgencia, this.proximoNumeroConta,
+                this.limitePadrao);
         this.proximoNumeroConta++;
-        for(int i=0; i<this.listaContaCorrente.length; i++){
-            if(listaContaCorrente[i]==null){
-                listaContaCorrente[i]=novaContaCorrente;
+        for (int i = 0; i < this.listaContaCorrente.length; i++) {
+            if (listaContaCorrente[i] == null) {
+                listaContaCorrente[i] = novaContaCorrente;
             }
         }
         return novaContaCorrente;
     }
-    public ContaPoupanca novaContaPoupanca(String nomeTitular){
-        ContaPoupanca novaContaPoupanca = new ContaPoupanca(nomeTitular, this.numeroAgencia, this.proximoNumeroConta, this.rendimentoPadrao);
+
+    public ContaPoupanca novaContaPoupanca(String nomeTitular) {
+        ContaPoupanca novaContaPoupanca = new ContaPoupanca(nomeTitular, this.numeroAgencia, this.proximoNumeroConta,
+                this.rendimentoPadrao);
         proximoNumeroConta++;
         return novaContaPoupanca;
     }
 
-    public void cobrarTaxa(Conta conta){
+    public void cobrarTaxa(Conta conta) {
         conta.sacar(5.0);
     }
-    public double balanco(){
+
+    public double balanco() {
         double somaCC = 0;
         double somaCP = 0;
-        for(int i = 0; i < listaContaCorrente.length; i++){
+        for (int i = 0; i < listaContaCorrente.length; i++) {
             somaCC += listaContaCorrente[i].getSaldo();
             // return somaCC;
-            System.out.println("Saldo total de Conta Corrente: "+ somaCC);
+
         }
-        for(int i = 0; i < listaContaPoupanca.length; i++){
-            somaCC += listaContaPoupanca[i].getSaldo();
+        System.out.println("Saldo total de Conta Corrente: " + somaCC);
+        for (int i = 0; i < listaContaPoupanca.length; i++) {
+            somaCP += listaContaPoupanca[i].getSaldo();
             // return somaCP;
-            System.out.println("Saldo total de Conta Poupança: "+ somaCP);
-        }  
+
+        }
+        System.out.println("Saldo total de Conta Poupança: " + somaCP);
         return 0;
     }
 }
