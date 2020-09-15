@@ -53,8 +53,9 @@ public class Agencia {
         return novaContaCorrente;
     }
     public ContaPoupanca novaContaPoupanca(String nomeTitular){
-        ContaPoupanca novaContaPoupanca = new ContaPoupanca(nomeTitular, this.Agencia, this.proximoNumeroConta, this.Padraorendimento);
+        ContaPoupanca novaContaPoupanca = new ContaPoupanca(nomeTitular, this.numeroAgencia, this.proximoNumeroConta, this.rendimentoPadrao);
         proximoNumeroConta++;
+        return null;
     }
 
     public void cobrarTaxa(Conta conta){
