@@ -76,7 +76,7 @@ public class Agencia {
         for (int i = 0; i < listaContaCorrente.length; i++) {
             somaCC += listaContaCorrente[i].getSaldo();
             // return somaCC;
-
+            // System.out.println(listaContaCorrente.length);
         }
         System.out.println("Saldo total de Conta Corrente: " + somaCC);
         for (int i = 0; i < listaContaPoupanca.length; i++) {
