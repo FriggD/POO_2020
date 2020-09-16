@@ -68,7 +68,7 @@ public class Conta {
             System.out.println("Saldo insuficiente");
         }
         else{
-            System.out.println("Valor de saque inválido");
+            System.out.println(" ");
         }
     }
 

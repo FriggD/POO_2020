@@ -27,7 +27,9 @@ public class ContaPoupanca extends Conta{
 
     @Override
     public void depositar(double valor) {
-        if(this.dataAniversario==""){
+        if (dataAniversario != null) {
+            this.dataAniversario = dataAniversario;
+        }else{
             this.dataAniversario = "28/08/2020";
         }
         super.depositar(valor);
