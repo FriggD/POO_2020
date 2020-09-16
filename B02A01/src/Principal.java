@@ -18,9 +18,11 @@ public class Principal {
 
         System.out.println("~========+ Poupancas +========~");
         ContaPoupanca contaCiclano = novaAgencia.novaContaPoupanca("Ciclano Souza");
+        contaCiclano.setDataAniversario("28/08/2020");
         System.out.println(contaCiclano);
         
         ContaPoupanca contaZeh = novaAgencia.novaContaPoupanca("Zeh");
+        contaZeh.setDataAniversario("28/08/2020");
         System.out.println(contaZeh);
     
         contaCiclano.depositar(400.0);
@@ -28,7 +30,14 @@ public class Principal {
         
         novaAgencia.cobrarTaxa(contaZeh);
 
+        System.out.println("\n~========+ BALANÇOS +========~\n");
+        System.out.println("~========+ ======== +========~");
+        System.out.println("\n~========+ Conta Correntes +========~");
         Conta[] listaContas = {contaFulano, contaBeltrano};
         novaAgencia.balanco(listaContas);
+        System.out.println("\n~========+ Conta Poupança +========~");
+        Conta[] listaContasP = {contaCiclano, contaZeh};
+        novaAgencia.balanco(listaContasP);
+        System.out.println("\n~========+ ======== +========~");
     }
 }
