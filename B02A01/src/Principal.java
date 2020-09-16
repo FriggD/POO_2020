@@ -17,17 +17,18 @@ public class Principal {
         novaAgencia.cobrarTaxa(contaFulano);
 
         System.out.println("~========+ Poupancas +========~");
-        // ContaPoupanca contaCiclano = novaAgencia.novaContaPoupanca("Ciclano Souza");
-        // System.out.println(contaCiclano);
+        ContaPoupanca contaCiclano = novaAgencia.novaContaPoupanca("Ciclano Souza");
+        System.out.println(contaCiclano);
         
-        // ContaPoupanca contaZeh = novaAgencia.novaContaPoupanca("Zeh");
-        // System.out.println(contaZeh);
+        ContaPoupanca contaZeh = novaAgencia.novaContaPoupanca("Zeh");
+        System.out.println(contaZeh);
     
-        // contaCiclano.depositar(400.0);
-        // contaZeh.depositar(600.0);
+        contaCiclano.depositar(400.0);
+        contaZeh.depositar(600.0);
         
-        // novaAgencia.cobrarTaxa(contaZeh);
+        novaAgencia.cobrarTaxa(contaZeh);
 
-        novaAgencia.balanco();
+        Conta[] listaContas = {contaFulano, contaBeltrano};
+        novaAgencia.balanco(listaContas);
     }
 }

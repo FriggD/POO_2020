@@ -70,21 +70,12 @@ public class Agencia {
         conta.sacar(5.0);
     }
 
-    public double balanco() {
-        double somaCC = 0;
-        double somaCP = 0;
-        for (int i = 0; i < listaContaCorrente.length; i++) {
-            somaCC += listaContaCorrente[i].getSaldo();
-            // return somaCC;
-            // System.out.println(listaContaCorrente.length);
+    public double balanco(Conta[] listaContas) {
+        double soma = 0;
+        for (int i = 0; i < listaContas.length; i++) {
+            soma += listaContas[i].getSaldo();
         }
-        System.out.println("Saldo total de Conta Corrente: " + somaCC);
-        for (int i = 0; i < listaContaPoupanca.length; i++) {
-            somaCP += listaContaPoupanca[i].getSaldo();
-            // return somaCP;
-
-        }
-        System.out.println("Saldo total de Conta Poupança: " + somaCP);
-        return 0;
+        System.out.println("Saldo Total: " + soma);
+        return soma;
     }
 }
