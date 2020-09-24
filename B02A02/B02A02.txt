@@ -1,0 +1,49 @@
+Elaborar uma classe chamada Produto:
+• Atributos
+– privado marca
+– privado modelo
+– privado preço
+• Métodos
+– Construtor com os atributos nome e preço
+– Método toString()
+– gets e sets
+
+2. Desenvolva uma classe computador que herde Produto:
+• Atributos adicionais
+– privado memória;
+– privado processador
+– privado hd;
+• Métodos
+– Construtor
+– gets e sets
+– Reescrever o método toString()
+
+3. Desenvolva uma classe monitor que herde Produto:
+• Atributos adicionais
+– privado tamanho tela
+• Métodos
+– Construtor
+– gets e sets
+– Reescrever o método toString()
+
+4. Desenvolva uma classe placa de video que herde Produto:
+• Atributos adicionais
+– privado memória
+– privado saídas de video
+• Métodos
+– Construtor
+– gets e sets
+– Reescrever o método toString()
+
+5. Desenvolva uma classe Carrinho:
+• Atributos
+– Lista de produtos (polimorfismo)
+• Métodos
+– Imprime a lista de todos os produtos (utilizar o método toString() dos objetos)
+– Calcula preço do carrinho
+
+6. Criar uma classe com um método main:
+• Criar pelo menos 1 produto de cada tipo
+• Criar 1 carrinho
+• Imprimir o carrinho
+• Calcular o preço do carrinho
