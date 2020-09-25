@@ -1,11 +1,12 @@
 public abstract class Produto {
     private String marca;
+    private String nome;
     private String modelo;
     private double preco;
 
-    public Produto(String marca, String modelo, double preco){
-        this.setMarca(marca);
-        this.setModelo(modelo);
+    public Produto(String nome, double preco){
+        // this.setMarca(marca);
+        this.setNome(nome);
         this.setPreco(preco);
     }
 
