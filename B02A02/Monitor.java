@@ -1,8 +1,8 @@
 public class Monitor extends Produto {
     private double tamanhoTela;
 
-    public Monitor(double tamanhoTela, String marca, String modelo, double preco) {
-        super(marca, modelo, preco);
+    public Monitor(double tamanhoTela, String nome, String marca, String modelo, double preco) {
+        super(nome, marca, modelo, preco);
         this.setTamanhoTela(tamanhoTela);
     }
 
