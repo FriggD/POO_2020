@@ -1,4 +1,4 @@
-public class Produto {
+public abstract class Produto {
     private String marca;
     private String modelo;
     private double preco;
@@ -29,7 +29,7 @@ public class Produto {
         return preco;
     }
 
-    public toString(){
+    public String toString(){
         dadosProd = "Marca: " + getMarca() + "\nModel: " + getModelo() + "\nPreco: " + getPreco();
         return dadosProd;
     }
