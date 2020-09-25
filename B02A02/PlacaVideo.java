@@ -1,30 +1,35 @@
 public class PlacaVideo extends Produto{
+	
     private int memoria;
-    private String saidaVideo;
-
-    public PlacaVideo(int memoria, String saidaVideo,  String marca, String modelo, double preco){
-        super(marca, modelo, preco);
-        this.setMemoria(memoria);
-        this.setsaidaVideo(saidaVideo);
-    }
-
-    public void setMemoria(int memoria) {
-        this.memoria = memoria;
-    }
-    public void setsaidaVideo(String saidaVideo) {
-        this.saidaVideo = saidaVideo;
-    }
+    private String[] saidasVideo;
     
-    public int getMemoria() {
-        return memoria;
-    }
-    public String getsaidaVideo() {
-        return saidaVideo;
-    }
+	public PlacaVideo(String nome, String marca, String modelo, double preco, int memoria, String[] saidasVideo) {
+		super(nome, marca, modelo, preco);
+		this.memoria = memoria;
+		this.saidasVideo = saidasVideo;
+	}
 
-    @Override
-    public String toString() {
-        dadosVideo = super.toString()+"\nMemoria: "+ getMemoria() + "\nsaidaVideo: "+ getsaidaVideo();
-        return dadosVideo;
-    }
+	public int getMemoria() {
+		return memoria;
+	}
+
+	public void setMemoria(int memoria) {
+		this.memoria = memoria;
+	}
+
+	public String[] getSaidasVideo() {
+		return saidasVideo;
+	}
+
+	public void setSaidasVideo(String[] saidasVideo) {
+		this.saidasVideo = saidasVideo;
+	}
+
+	@Override
+	public String toString() {
+		return "PlacaVideo [nome=" + nome + ", marca=" + marca + ", modelo=" + modelo + ", preco=" + preco
+				+ ", memoria=" + memoria + ", saidasVideo=" + Arrays.toString(saidasVideo) + "]";
+	}
+
+
 }

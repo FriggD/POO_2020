@@ -1,15 +1,31 @@
 public abstract class Produto {
-    private String marca;
-    private String nome;
-    private String modelo;
-    private double preco;
+	
+	protected String nome;
+    protected String marca;
+    protected String modelo;
+    protected double preco;
 
-    public Produto(String nome, double preco){
-        // this.setMarca(marca);
-        this.setNome(nome);
-        this.setPreco(preco);
-    }
 
+    public Produto(String nome, String marca, String modelo, double preco) {
+		this.nome = nome;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.preco = preco;
+	}
+    
+    	public Produto(String nome, double preco) {
+		this.nome = nome;
+		this.preco = preco;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+    
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -30,9 +46,10 @@ public abstract class Produto {
         return preco;
     }
 
-    public String toString(){
-        dadosProd = "Marca: " + getMarca() + "\nModel: " + getModelo() + "\nPreco: " + getPreco();
-        return dadosProd;
-    }
+	@Override
+	public String toString() {
+		return "Produto [nome=" + nome + ", marca=" + marca + ", modelo=" + modelo + ", preco=" + preco + "]";
+	}
+
 
 }

@@ -1,7 +1,7 @@
-public class Monitor extends Produto{
+public class Monitor extends Produto {
     private double tamanhoTela;
 
-    public Monitor(double tamanhoTela, String marca, String modelo, double preco){
+    public Monitor(double tamanhoTela, String marca, String modelo, double preco) {
         super(marca, modelo, preco);
         this.setTamanhoTela(tamanhoTela);
     }
@@ -9,13 +9,15 @@ public class Monitor extends Produto{
     public void setTamanhoTela(double tamanhoTela) {
         this.tamanhoTela = tamanhoTela;
     }
-    public int getTamanhoTela() {
+
+    public double getTamanhoTela() {
         return tamanhoTela;
     }
-   
+
     @Override
     public String toString() {
-        dadosMonitor = super.toString()+"\nTamanho da tela: "+ getTamanhoTela() ;
-        return dadosMonitor;
+        return "Monitor [tamanhoTela=" + tamanhoTela + ", Marca=" + getMarca() + ", Modelo=" + getModelo() + ", Preco="
+                + getPreco() + "]";
     }
+
 }
