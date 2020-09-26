@@ -1,0 +1,118 @@
+0.1 Utilizar como base o exercício da aula anterior:
+As partes destacadas em vermelho são as alterações
+1. Elaborar uma classe abstrata de conta bancária chamada Conta:
+• Atributos
+– protected nomeTitular (String)
+– protected agencia (int)
+– protected numero (int)
+– protected saldo (double)
+• Métodos
+– Construtor com os atributos nome do titular, agência e número (o saldo deve
+ser sempre inicializado com 0)
+– Método toString()
+– gets e sets dos sequintes atributos:
+∗ nomeTitular
+∗ agencia (não pode ser <=0)
+∗ numero (não pode ser <=0)
+– Método getSaldo (não tem o método setSaldo!!)
+– Método abstrato depositar retorna um inteiro
+– Método abstrato sacar retorna um inteiro
+– Método imprime extrato (Mostra em tela o extrato de saldo da conta)
+
+2. Desenvolva uma classe concreta Conta corrente que estende a Classe abstrata Conta:
+• Atributos adicionais
+– privado limite (double)
+• Métodos
+– Construtor com o nome do titular, agência, número e limite (usar o construtor
+da superclasse)
+– get e set do atributo limite
+– Reescrever o método toString()
+– Sobrescrever o método abstrato sacar():
+∗ O valor de saque deve ser maior que 0 e menor ou igual ao saldo+limite
+
+Aula prática B02A02 24 de setembro de 2020
+
+∗ Retorna 1 se a operação for um sucesso e 0 caso contrário
+– Sobrescrever o método abstrato depositar():
+∗ O valor de depósito deve ser maior que 0.
+∗ Retorna 1 se a operação for um sucesso e 0 caso contrário
+
+3. Desenvolva uma classe Conta poupança, que herde os atributos e métodos de Conta:
+• Atributos adicionais
+– privado data de aniversário (String)
+– privado porcentual de rendimento (double)
+• Métodos
+
+– Construtor com o nome do titular, agência, número e rendimento (usar o cons-
+trutor da superclasse)
+
+– gets e sets dos sequintes atributos:
+∗ data de aniversário
+∗ percentual de rendimento
+– Método adicionaRendimento (Adiciona o percentual de rendimento ao saldo)
+– Reescrever o método toString()
+– Sobrescrever o método abstrato sacar():
+∗ O valor de saque deve ser maior que 0 e menor ou igual ao saldo
+∗ Retorna 1 se a operação for um sucesso e 0 caso contrário
+– Sobrescrever o método abstrato depositar():
+∗ O valor de depósito deve ser maior que 0.
+∗ Se a data de aniversário for vazia, setar com a data atual (para simplificar
+pode deixar uma data fixa como exemplo hoje "24/09/2020")
+∗ Retorna 1 se a operação for um sucesso e 0 caso contrário
+
+4. Desenvolva uma classe Agência que é composta por:
+• Numero da agência (inteiro)
+• Próximo numero de conta, inicia em 1;
+– Um contador que irá definir qual é o próximo numero de conta corrente ou
+
+poupança. Sempre que uma conta nova é criada na agência o numero é incre-
+mentado
+
+• limite padrão (double)
+• rendimento padrão (double)
+• Lista de Contas corrente (máximo 20)
+• Lista de Contas Poupança (máximo 20)
+• Métodos
+– Construtor
+– gets
+∗ Numero da agencia
+
+POO Pag. 2 de 3
+
+Aula prática B02A02 24 de setembro de 2020
+
+∗ Próximo numero
+∗ Lista de Contas corrente
+∗ Lista de Contas Poupança
+– gets e sets
+∗ Limite padrão
+∗ Rendimento Padrão
+– Criar nova Conta Corrente
+∗ Parâmetro nome do titular apenas
+∗ O numero da agência deve ser o mesmo da classe agencia
+∗ O numero da conta deve ser utilizado o atributo proximo numero
+∗ O limite deve ser configurado o limite padrão
+– Criar nova Conta Poupança
+∗ Parâmetro nome do titular apenas
+∗ O numero da agência deve ser o mesmo da classe agencia
+∗ O numero da conta deve ser utilizado o atributo proximo numero
+∗ O rendimento deve ser configurado o rendimento padrão
+– Cobrar taxa
+∗ Debita uma taxa de 5 R$ referente a cesta de serviços, da conta passada
+como parâmetro (pode ser Corrente ou poupança)
+– balanço
+∗ Recebe um vetor de contas como parâmetro e faz a soma dos saldos (pode
+ser conta corrente ou Conta Poupança)
+
+5. Criar uma classe com um método main:
+• Cria uma agência
+• Adiciona 2 contas Correntes e 2 contas Poupança
+• Fazer depósitos nas contas.
+• Cobrar taxa de uma conta Corrente
+• Cobrar a taxa de uma conta Poupança
+• Fazer o balanço das contas poupanças da agencia
+• Fazer o balanço das contas correntes da agência
+
+6. Desafio: Criar um método concreto transferir na classe abstrata Conta. Esse método
+consegue utlizar os métodos abstratos depositar e sacar mesmo que eles ainda não foram
+implementados em uma classe concreta?
