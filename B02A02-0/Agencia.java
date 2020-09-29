@@ -98,7 +98,7 @@ public class Agencia {
 			} catch (Exception e) {
 				System.out.println("Erro na manipulação da Conta");
 			}
-		} else {	
+		} else {
 			try {
 				conta.sacar(5.00);
 			} catch (Exception e) {
@@ -106,199 +106,253 @@ public class Agencia {
 			}
 		}
 	}
-	
-	
+
 	public double balanco(ArrayList<? extends Conta> listaContas) {
-        double soma = 0;
-        for (int i = 0; i < listaContas.size(); i++) {
-            soma += listaContas.get(i).getSaldo();
-        }
-        System.out.println("Saldo Total: " + soma);
-        return soma;
-    }
-	
-	public void operarConta (int conta, int operacao, double valor) throws Exception {
-		//Esse método opera uma conta utilizando o NÚMERO DA CONTA como critério para localização
-		//1 - Depósito
-		//2 - Saque
-		//3 - Taxa
-		//4 - Transferência (Utilizada apenas com duas contas, não entra neste método)
-		
-		for(int i=0;i<contasCorrente.size();i++) {
-			if(contasCorrente.get(i).getNumero()==conta) {
-				switch(operacao) {
-				case 1:
-					contasCorrente.get(i).depositar(valor);
-					break;
-				
-				case 2:
-					contasCorrente.get(i).sacar(valor);
-					break;
-					
-				case 3:
-					cobrarTaxa(contasCorrente.get(i));
-					break;
-					
-				case 4:
-					System.out.println("Por favor, insira um destinatário para realizar a transferência");
-					break;
-				}
-				break;
-			}
+		double soma = 0;
+		for (int i = 0; i < listaContas.size(); i++) {
+			soma += listaContas.get(i).getSaldo();
 		}
-		
-		for(int i=0;i<contasPoupanca.size();i++) {
-			if(contasPoupanca.get(i).getNumero()==conta) {
-				switch(operacao) {
-				case 1:
-					contasPoupanca.get(i).depositar(valor);
-					break;
-				
-				case 2:
-					contasPoupanca.get(i).sacar(valor);
-					break;
-					
-				case 3:
-					cobrarTaxa(contasPoupanca.get(i));
-					break;
-					
-				case 4:
-					System.out.println("Por favor, insira um destinatário para realizar a transferência");
-					break;
-				}
-				
-			}
-		}
-		
+		System.out.println("Balanço: " + soma);
+		return soma;
 	}
-	
-	public void operarConta (int conta, int operacao, double valor, int destino) throws Exception {
-		//Esse método opera uma conta utilizando o NÚMERO DA CONTA como critério para localização
-		//1 - Depósito
-		//2 - Saque
-		//3 - Taxa
-		//4 - Transferência (Sobrecarga foi feita apenas para este uso)
-		
-		Conta contaDestino=null;
-		
-		for(int i=0;i<contasCorrente.size();i++) {
-			if(contasCorrente.get(i).getNumero()==destino) {
-				contaDestino=contasCorrente.get(i);
-				break;
-			}
-		}
-		
-		for(int i=0;i<contasPoupanca.size();i++) {
-			if(contasPoupanca.get(i).getNumero()==destino) {
-				contaDestino=contasPoupanca.get(i);
-				break;
-			}
-		}
-		
-		for(int i=0;i<contasCorrente.size();i++) {
-			if(contasCorrente.get(i).getNumero()==conta) {
-				switch(operacao) {
-				case 1:
-					contasCorrente.get(i).depositar(valor);
-					break;
-				
-				case 2:
-					contasCorrente.get(i).sacar(valor);
-					break;
-					
-				case 3:
-					cobrarTaxa(contasCorrente.get(i));
-					break;
-					
-				case 4:
-					contasCorrente.get(i).transferir(contaDestino, valor);
-					break;
+
+	public void operarConta(int conta, int operacao, double valor) throws Exception {
+		// Esse método opera uma conta utilizando o NÚMERO DA CONTA como critério para
+		// localização
+		// 1 - Depósito
+		// 2 - Saque
+		// 3 - Taxa
+		// 4 - Transferência (Utilizada apenas com duas contas, não entra neste método)
+
+		for (int i = 0; i < contasCorrente.size(); i++) {
+			if (contasCorrente.get(i).getNumero() == conta) {
+				switch (operacao) {
+					case 1:
+						contasCorrente.get(i).depositar(valor);
+						break;
+
+					case 2:
+						contasCorrente.get(i).sacar(valor);
+						break;
+
+					case 3:
+						cobrarTaxa(contasCorrente.get(i));
+						break;
+
+					case 4:
+						System.out.println("Por favor, insira um destinatário para realizar a transferência");
+						break;
+
+					case 5:
+						contasCorrente.get(i).imprimeExtrato();
+						break;
+
+					default:
+						System.out.println("Operação inválida!");
+						break;
+
 				}
 				break;
 			}
 		}
-		
-		for(int i=0;i<contasPoupanca.size();i++) {
-			if(contasPoupanca.get(i).getNumero()==conta) {
-				switch(operacao) {
-				case 1:
-					contasPoupanca.get(i).depositar(valor);
-					break;
-				
-				case 2:
-					contasPoupanca.get(i).sacar(valor);
-					break;
-					
-				case 3:
-					cobrarTaxa(contasPoupanca.get(i));
-					break;
-					
-				case 4:
-					contasPoupanca.get(i).transferir(contaDestino, valor);
-					break;
+
+		for (int i = 0; i < contasPoupanca.size(); i++) {
+			if (contasPoupanca.get(i).getNumero() == conta) {
+				switch (operacao) {
+					case 1:
+						contasPoupanca.get(i).depositar(valor);
+						break;
+
+					case 2:
+						contasPoupanca.get(i).sacar(valor);
+						break;
+
+					case 3:
+						cobrarTaxa(contasPoupanca.get(i));
+						break;
+
+					case 4:
+						System.out.println("Por favor, insira um destinatário para realizar a transferência");
+						break;
+
+					case 5:
+						contasPoupanca.get(i).imprimeExtrato();
+						break;
+
+					default:
+						System.out.println("Operação inválida!");
+						break;
+
 				}
-				
+
 			}
 		}
-		
+
 	}
-	
-	public void operarConta (int conta, int operacao) throws Exception {
-		//Esse método opera uma conta utilizando o NÚMERO DA CONTA como critério para localização
-		//Não admite valores, pois é usado apenas para cobrar taxas
-		//1 - Depósito
-		//2 - Saque
-		//3 - Taxa
-		//4 - Transferência (Utilizada apenas com duas contas, não entra neste método)
-		
-		for(int i=0;i<contasCorrente.size();i++) {
-			if(contasCorrente.get(i).getNumero()==conta) {
-				switch(operacao) {
-				case 1:
-					System.out.println("Por favor, insira um valor para operação");
-					break;
-				
-				case 2:
-					System.out.println("Por favor, insira um valor para operação");
-					break;
-					
-				case 3:
-					cobrarTaxa(contasCorrente.get(i));
-					break;
-					
-				case 4:
-					System.out.println("Por favor, insira um destinatário para realizar a transferência");
-					break;
+
+	public void operarConta(int conta, int operacao, double valor, int destino) throws Exception {
+		// Esse método opera uma conta utilizando o NÚMERO DA CONTA como critério para
+		// localização
+		// 1 - Depósito
+		// 2 - Saque
+		// 3 - Taxa
+		// 4 - Transferência (Sobrecarga foi feita apenas para este uso)
+
+		Conta contaDestino = null;
+
+		for (int i = 0; i < contasCorrente.size(); i++) {
+			if (contasCorrente.get(i).getNumero() == destino) {
+				contaDestino = contasCorrente.get(i);
+				break;
+			}
+		}
+
+		for (int i = 0; i < contasPoupanca.size(); i++) {
+			if (contasPoupanca.get(i).getNumero() == destino) {
+				contaDestino = contasPoupanca.get(i);
+				break;
+			}
+		}
+
+		for (int i = 0; i < contasCorrente.size(); i++) {
+			if (contasCorrente.get(i).getNumero() == conta) {
+				switch (operacao) {
+					case 1:
+						contasCorrente.get(i).depositar(valor);
+						break;
+
+					case 2:
+						contasCorrente.get(i).sacar(valor);
+						break;
+
+					case 3:
+						cobrarTaxa(contasCorrente.get(i));
+						break;
+
+					case 4:
+						contasCorrente.get(i).transferir(contaDestino, valor);
+						break;
+
+					case 5:
+						contasCorrente.get(i).imprimeExtrato();
+						break;
+
+					default:
+						System.out.println("Operação inválida!");
+						break;
+
 				}
 				break;
 			}
 		}
-		
-		for(int i=0;i<contasPoupanca.size();i++) {
-			if(contasPoupanca.get(i).getNumero()==conta) {
-				switch(operacao) {
-				case 1:
-					System.out.println("Por favor, insira um valor para operação");
-					break;
-				
-				case 2:
-					System.out.println("Por favor, insira um valor para operação");
-					break;
-					
-				case 3:
-					cobrarTaxa(contasPoupanca.get(i));
-					break;
-					
-				case 4:
-					System.out.println("Por favor, insira um destinatário para realizar a transferência");
-					break;
+
+		for (int i = 0; i < contasPoupanca.size(); i++) {
+			if (contasPoupanca.get(i).getNumero() == conta) {
+				switch (operacao) {
+					case 1:
+						contasPoupanca.get(i).depositar(valor);
+						break;
+
+					case 2:
+						contasPoupanca.get(i).sacar(valor);
+						break;
+
+					case 3:
+						cobrarTaxa(contasPoupanca.get(i));
+						break;
+
+					case 4:
+						contasPoupanca.get(i).transferir(contaDestino, valor);
+						break;
+
+					case 5:
+						contasPoupanca.get(i).imprimeExtrato();
+						break;
+
+					default:
+						System.out.println("Operação inválida!");
+						break;
+
 				}
-				
+
 			}
 		}
-		
+
 	}
-	
-	
+
+	public void operarConta(int conta, int operacao) throws Exception {
+		// Esse método opera uma conta utilizando o NÚMERO DA CONTA como critério para
+		// localização
+		// Não admite valores, pois é usado apenas para cobrar taxas ou tirar extrato
+		// 1 - Depósito
+		// 2 - Saque
+		// 3 - Taxa
+		// 4 - Transferência (Utilizada apenas com duas contas, não entra neste método)
+		// 5 - Extrato
+
+		for (int i = 0; i < contasCorrente.size(); i++) {
+			if (contasCorrente.get(i).getNumero() == conta) {
+				switch (operacao) {
+					case 1:
+						System.out.println("Por favor, insira um valor para operação");
+						break;
+
+					case 2:
+						System.out.println("Por favor, insira um valor para operação");
+						break;
+
+					case 3:
+						cobrarTaxa(contasCorrente.get(i));
+						break;
+
+					case 4:
+						System.out.println("Por favor, insira um destinatário para realizar a transferência");
+						break;
+
+					case 5:
+						contasCorrente.get(i).imprimeExtrato();
+						break;
+
+					default:
+						System.out.println("Operação inválida!");
+						break;
+
+				}
+				break;
+			}
+		}
+
+		for (int i = 0; i < contasPoupanca.size(); i++) {
+			if (contasPoupanca.get(i).getNumero() == conta) {
+				switch (operacao) {
+					case 1:
+						System.out.println("Por favor, insira um valor para operação");
+						break;
+
+					case 2:
+						System.out.println("Por favor, insira um valor para operação");
+						break;
+
+					case 3:
+						cobrarTaxa(contasPoupanca.get(i));
+						break;
+
+					case 4:
+						System.out.println("Por favor, insira um destinatário para realizar a transferência");
+						break;
+
+					case 5:
+						contasPoupanca.get(i).imprimeExtrato();
+						break;
+
+					default:
+						System.out.println("Operação inválida!");
+						break;
+				}
+
+			}
+		}
+
+	}
 
 }
