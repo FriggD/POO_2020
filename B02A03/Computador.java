@@ -81,5 +81,8 @@ public class Computador extends Produto implements Promocionavel, Personalizavel
 		   else  
 		      return -1;  
 	}
-
+    @Override
+    public String descricaoPromocao(){
+        return "De 2 a 4 computadores, 15% de desconto em cada. De 5 a 6, 25% de desconto em cada. Acima de 6, 30% de desconto em cada";
+    }
 }
